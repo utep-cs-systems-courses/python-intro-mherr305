@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+#Manuel Herrera
 import re   #Regular exp tool
 import sys  #Command line
 import os   #Check if file exists
@@ -25,3 +25,20 @@ for line in inputTextFile:
     line = re.sub('[^\w\s]', '', line)
     line = line.strip()
     textWords = line.split()
+
+#Uses the dict() function and add words to that particular dictionary.
+textNumWords = dict()
+for word in textWords:
+    if word in textNumWords:
+        textNumWords[word] = textNumWords[word] + 1
+    else:
+        textNumWords[word] = 1
+
+#Open the output text file and writes the new output on it.
+outTextFile = open(outputFileName, "w")
+for item in sorted(textWords.items()):
+    outTextFile.write(str(item)+ " " + str(textNumWords[1]) + "\n")
+
+#Exit input and output files
+inputTextFile.close()
+outTextFile.close()
